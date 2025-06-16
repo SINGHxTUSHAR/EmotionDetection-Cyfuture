@@ -13,7 +13,7 @@
 # EmotionDetection - Cyfuture
 ![Preview Image](https://github.com/SINGHxTUSHAR/EmotionDetection-Cyfuture/blob/main/preview.jpg)
 
-#### Project Overview:
+### Project Overview:
 This project focuses on developing a machine learning model to detect human emotions from facial expressions. Using advanced computer vision techniques and deep learning algorithms, the model identifies emotions such as happiness, sadness, anger, and more in real-time. The application is designed to be user-friendly and can be integrated into various platforms to enhance user interaction.
 
 Developed for Cyfuture, this emotion detection system provides valuable insights into user sentiments, enabling improved customer engagement and personalized experiences.
@@ -68,6 +68,39 @@ python -m venv venv
   ```bash
   source venv/bin/activate
   ```
+
+---
+
+## File Structure
+
+```
+.
+├── app.py                       # Streamlit app for Text Emotion Detection
+├── emotion-detection-using-nlp.ipynb  # Jupyter notebook for text classification
+├── model.pkl                    # Pretrained Random Forest model for text
+├── model_lr.pkl                 # Pretrained Logistic Regression model for text
+├── preview.jpg                  # Sample preview image for facial emotion
+├── archive/                     # Dataset(s) and supporting files
+├── requirements.txt             # All dependencies
+└── README.md
+```
+
+---
+
+#### Example (from app.py):
+
+```python
+import streamlit as st
+import joblib
+
+# Load the model and classify user text
+model = joblib.load("model.pkl")
+user_text = st.text_area("Enter text:", "I am very happy today!")
+
+if st.button("Classify Emotion"):
+    emotion = model.predict([user_text])[0]
+    st.write(f"Detected Emotion: **{emotion.capitalize()}**")
+```
 
 
 ## Contributing 📌:
